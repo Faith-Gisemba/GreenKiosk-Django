@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Delivery Detail</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            margin: 0;
+            padding: 0;
+        }
+
+        h2 {
+            text-align: center;
+            padding: 20px;
+            color: #333;
+        }
+
+        .delivery-details {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        p {
+            margin-bottom: 10px;
+        }
+
+        strong {
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <h2>Delivery Detail</h2>
+    <div class="delivery-details">
+        <p><strong>Customer Name:</strong> {{ delivery.customer_name }}</p>
+        <p><strong>Delivery Address:</strong> {{ delivery.delivery_address }}</p>
+        <p><strong>Delivery Status:</strong> {{ delivery.delivery_status }}</p>
+        <p><strong>Delivery Date:</strong> {{ delivery.delivery_date }}</p>
+        <p><strong>Delivery Method:</strong> {{ delivery.delivery_method }}</p>
+        <p><strong>Order ID:</strong> {{ delivery.order_id }}</p>
+        <p><strong>Delivery Cost:</strong> {{ delivery.delivery_cost }}</p>
+    </div>
+</body>
+</html>
+

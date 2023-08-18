@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Delivery</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            margin: 0;
+            padding: 0;
+        }
+
+        h2 {
+            text-align: center;
+            padding: 20px;
+            color: #333;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input[type="date"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: white;
+        }
+
+        button[type="submit"] {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h2>Edit Delivery</h2>
+    <form method="post">
+        {% csrf_token %}
+        
+        <label for="delivery_date">Delivery Date:</label>
+        <input type="date" id="delivery_date" name="delivery_date" value="{{ form.delivery_date.value }}" required>
+
+        <label for="customer">Customer:</label>
+        <select id="customer" name="customer">
+            {% for customer in customers %}
+                <option value="{{ customer.id }}">{{ customer.first_name }} {{ customer.last_name }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="product">Product:</label>
+        <select id="product" name="product">
+            {% for product in products %}
+                <option value="{{ product.id }}">{{ product.product_name }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="delivery_status">Delivery Status:</label>
+        <select id="delivery_status" name="delivery_status">
+            <option value="pending">Pending</option>
+            <option value="in_transit">In Transit</option>
+            <option value="delivered">Delivered</option>
+        </select>
+
+        <label for="delivery_method">Delivery Method:</label>
+        <select id="delivery_method" name="delivery_method">
+            <option value="standard">Standard</option>
+            <option value="express">Express</option>
+            <option value="courier">Courier</option>
+        </select>
+
+        <label for="order_id">Order ID:</label>
+        <input type="text" id="order_id" name="order_id" value="{{ form.order_id.value }}" required>
+
+        <label for="delivery_cost">Delivery Cost:</label>
+        <input type="text" id="delivery_cost" name="delivery_cost" value="{{ form.delivery_cost.value }}" required>
+
+        <button type="submit">Save Changes</button>
+    </form>
+</body>
+</html>

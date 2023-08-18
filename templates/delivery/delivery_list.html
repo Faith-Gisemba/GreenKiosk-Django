@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Delivery List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            margin: 0;
+            padding: 0;
+        }
+
+        h2 {
+            text-align: center;
+            padding: 20px;
+            color: #333;
+        }
+
+        ul {
+            list-style: none;
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 0;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        li {
+            border-bottom: 1px solid #ccc;
+            padding: 10px;
+        }
+
+        li:last-child {
+            border-bottom: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: #007bff;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h2>Delivery List</h2>
+    <ul>
+        {% for delivery in deliveries %}
+            <li><a href="{% url 'edit_delivery' delivery.id %}">{{ delivery.customer_name }} - Order {{ delivery.order_id }}</a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+
+

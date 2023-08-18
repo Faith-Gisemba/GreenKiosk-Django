@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Category Detail</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            margin: 0;
+            padding: 0;
+        }
+
+        h2 {
+            text-align: center;
+            padding: 20px;
+            color: #333;
+        }
+
+        .category-details {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        p {
+            margin-bottom: 10px;
+        }
+
+        strong {
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <h2>Category Detail</h2>
+    <div class="category-details">
+        <p><strong>Name:</strong> {{ category.name }}</p>
+        <p><strong>Description:</strong> {{ category.description }}</p>
+        <p><strong>Status:</strong> {{ category.status }}</p>
+        <p><strong>Stock:</strong> {{ category.stock }}</p>
+        <p><strong>Date Created:</strong> {{ category.date_created }}</p>
+        <p><strong>Date Updated:</strong> {{ category.date_updated }}</p>
+    </div>
+</body>
+</html>

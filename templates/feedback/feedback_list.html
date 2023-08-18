@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Feedback List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            margin: 0;
+            padding: 0;
+        }
+
+        h2 {
+            text-align: center;
+            padding: 20px;
+            color: #333;
+        }
+
+        ul {
+            list-style: none;
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 0;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        li {
+            border-bottom: 1px solid #ccc;
+            padding: 10px;
+        }
+
+        li:last-child {
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body>
+    <h2>Feedback List</h2>
+    <ul>
+        {% for feedback in feedbacks %}
+            <li>{{ feedback.feedback }} (Ratings: {{ feedback.ratings }})</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Order Detail</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            margin: 0;
+            padding: 0;
+        }
+
+        h2 {
+            text-align: center;
+            padding: 20px;
+            color: #333;
+        }
+
+        p {
+            margin-bottom: 10px;
+            padding: 5px;
+        }
+
+        strong {
+            color: #007bff;
+        }
+
+        .order-detail {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <h2>Order Detail</h2>
+    <div class="order-detail">
+        <p><strong>Order ID:</strong> {{ order.order_id }}</p>
+        <p><strong>User ID:</strong> {{ order.user_id }}</p>
+        <p><strong>Product ID:</strong> {{ order.product_id }}</p>
+        <p><strong>Quantity:</strong> {{ order.quantity }}</p>
+        <p><strong>Total Price:</strong> {{ order.total_price }}</p>
+        <p><strong>Order Date:</strong> {{ order.order_date }}</p>
+        <p><strong>Items:</strong> {{ order.items }}</p>
+        <p><strong>Order Status:</strong> {{ order.order_status }}</p>
+    </div>
+</body>
+</html>
+
