@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Cart View</title>
+</head>
+<body>
+    <h2>Your Cart</h2>
+    <ul>
+        {% for item in cart_items %}
+            <li>  <form method="post" action="{% url 'inventory:cart' %}">
+                {{ item.product_name }} - {{ item.quantity }} pcs
+            </li>
+        {% endfor %}
+    </ul>
+
+    <form method="post" action="{% url 'checkout' %}">
+        {% csrf_token %}
+        <button type="submit">Continue to Checkout</button>
+    </form>
+
+    <a href="{% url 'product_detail' product.id %}">Go back to product details</a>
+</body>
+</html>

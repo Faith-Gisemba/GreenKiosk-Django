@@ -11,14 +11,14 @@
             margin: 0;
             padding: 0;
         }
-
+        
         h2 {
             color: green;
             text-align: center;
             padding: 20px 0;
             margin: 0;
         }
-
+        
         img {
             max-width: 100%;
             height: auto;
@@ -28,13 +28,13 @@
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
-
+        
         p {
             font-size: 16px;
             text-align: center;
             margin: 10px 0;
         }
-
+        
         span {
             font-size: 18px;
             font-weight: bold;
@@ -43,7 +43,7 @@
             text-align: center;
             margin-bottom: 20px;
         }
-
+        
         button {
             width: 10%;
             padding: 10px;
@@ -51,15 +51,26 @@
             color: white;
             border: none;
             border-radius: 4px;
-            margin-left: 400px;
+            margin-left: auto;
+            margin-right: auto;
             cursor: pointer;
             font-weight: bold;
             font-size: 16px;
             transition: background-color 0.3s ease;
+            display: block;
         }
-
+        
         button:hover {
-            background-color: #FFFF00;
+            background-color: #4CAF50;
+        }
+        
+        form {
+            text-align: center;
+        }
+        
+        input[type="number"] {
+            width: 50px;
+            text-align: center;
         }
     </style>
 </head>
@@ -69,7 +80,19 @@
     <p>{{ product.description }}</p>
     <span>{{ product.price }}</span>
     <button type="submit">Delete</button>
-    <button>Add to cart</button>
+    
+    {% comment %} <form method="post" action="{% url 'add_to_cart' product.id %}">
+        {% csrf_token %}
+        <input type="number" name="quantity" value="1" min="1">
+        <button type="submit">Add to cart</button>
+    </form> {% endcomment %}
+
+    <form method="post" action="{% url 'cart' %}">
+        {% csrf_token %}
+        <input type="number" name="quantity" value="1" min="1">
+        <button type="submit">Add to cart</button>
+    </form>
     
 </body>
 </html>
+

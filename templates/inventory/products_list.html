@@ -12,20 +12,49 @@
             padding: 0;
         }
 
-        h1 {
-            background-color: #4CAF50; 
-            color: white; 
+        .header {
+            background-color: #4CAF50;
+            color: white;
             text-align: center;
-            padding: 10px 0; 
+            padding: 10px 0;
             margin: 0;
-            font-size: 36px; 
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); 
+            font-size: 36px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
 
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+        }
+
+        .logo img {
+            height: 60px;
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 20px;
+            padding: 10px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 8px;
+            border: none;
+            border-radius: 4px;
+        }
+
+        .notification {
+            color: #4CAF50;
+            font-size: 24px;
+            margin-right: 20px;
         }
 
         .product-container {
@@ -45,6 +74,12 @@
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
             text-align: center;
+        }
+
+        .product-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
         }
 
         .product-card h3 {
@@ -71,7 +106,18 @@
     </style>
 </head>
 <body>
-    <h1>GreenKiosk Product page</h1>
+    <div class="header">
+        <div class="logo">
+            <img src="faip.png" alt="GreenKiosk Logo">
+            <div class="notification">
+                <a href="#"><span class="notification-icon">&#128276;</span></a>
+            </div>
+        </div>
+        <div class="search-bar">
+            <input type="text" class="search-input" placeholder="Search products...">
+            <button>Search</button>
+        </div>
+    </div>
     <div class="product-container">
         {% for product in products %}
         <div class="product-card">
@@ -79,17 +125,14 @@
             <h3>{{ product.name }}</h3>
             <p>{{ product.description }}</p>
             <p>Price: {{ product.price }}</p>
-            {% comment %} <p>Stock quantity: {{ product.stock }}</p> {% endcomment %}
             <a href="{% url 'product_update' id=product.id %}">Edit product</a>
             <a href="{% url 'product_detail_view' id=product.id %}">View Details</a>
-            
-           
-
         </div>
         {% endfor %}
     </div>
 </body>
 </html>
+
 
 
 

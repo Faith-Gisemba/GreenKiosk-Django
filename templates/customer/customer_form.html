@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Customer Detail</title>
+    <title>Create/Edit Customer</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'styles.css' %}">
     <style>
@@ -38,35 +38,42 @@
             border-radius: 10px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
-        .customer-detail {
+        .customer-form {
             padding: 20px;
             background-color: #fff;
             border-radius: 10px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             margin-top: 20px;
         }
-        .customer-detail h2 {
+        .customer-form h2 {
             color: #EE609C;
         }
-        .customer-info p {
-            margin-bottom: 10px;
+        .form-group {
+            margin-bottom: 15px;
         }
-        .customer-info strong {
+        label {
             color: #EE609C;
+            font-weight: bold;
+            display: block;
         }
-        .edit-link {
-            text-align: center;
+        input[type="text"], input[type="email"], input[type="tel"] {
+            width: 100%;
             padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
         }
-        .edit-link a {
+        button[type="submit"] {
             background-color: #EE609C;
             color: white;
-            text-decoration: none;
             padding: 10px 20px;
+            border: none;
             border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
             transition: background-color 0.3s;
         }
-        .edit-link a:hover {
+        button[type="submit"]:hover {
             background-color: #F67FA6;
         }
     </style>
@@ -80,17 +87,43 @@
         <a href="{% url 'customer_create' %}">Create Customer</a>
     </nav>
     <div class="container">
-        <div class="customer-detail">
-            <h2>Customer Detail</h2>
-            <div class="customer-info">
-                <p><strong>Name:</strong> {{ customer }}</p>
-                <p><strong>Email:</strong> {{ customer.email }}</p>
-                <p><strong>Phone Number:</strong> {{ customer.phone_number }}</p>
-            </div>
-        </div>
-        <div class="edit-link">
-            <a href="{% url 'customer_edit' customer.pk %}">Edit Customer</a>
+        <div class="customer-form">
+            <h2>Create/Edit Customer</h2>
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="{{ form.first_name.id_for_label }}">First Name:</label>
+                    {{ form.first_name }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.last_name.id_for_label }}">Last Name:</label>
+                    {{ form.last_name }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.email.id_for_label }}">Email:</label>
+                    {{ form.email }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.phone_number.id_for_label }}">Phone Number:</label>
+                    {{ form.phone_number }}
+                </div>
+                <button type="submit">Save</button>
+            </form>
         </div>
     </div>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

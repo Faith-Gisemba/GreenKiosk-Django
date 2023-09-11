@@ -1,37 +1,30 @@
-from django.shortcuts import render, get_object_or_404, redirect
-from .forms import CartForm
+# views.py
+from django.shortcuts import render, redirect
 from .models import Cart
+from .forms import CartAddForm
 
-def edit_cart(request, cart_id):
-    cart = get_object_or_404(Cart, pk=cart_id)
+def cart_view(request):
     if request.method == 'POST':
-        form = CartForm(request.POST, request.FILES, instance=cart)
+        form = CartAddForm(request.POST)
         if form.is_valid():
-            form.save()
-            return redirect('cart_list')
+            cart_item = form.save(commit=False)
+            cart_item.save()
+            return redirect('cart')
     else:
-        form = CartForm(instance=cart)
-        return render(request, 'edit_cart.html', {'form': form, 'cart': cart})
+        form = CartAddForm()
+
+    cart_items = Cart.objects.all()  
+    context = {
+        'cart_items': cart_items,
+        'form': form,
+    }
+    return render(request, 'cart/cart.html', context)
 
 
-def create_cart(request):
-    if request.method == 'POST':
-        form = CartForm(request.POST, request.FILES)
-        if form.is_valid():
-           form.save()
-        return redirect('cart_list')
-    else:
-        form = CartForm()
-        return render(request, 'cart/create_cart.html', {'form': form})
 
 
-def cart_list(request):
-    carts = Cart.objects.all()
-    return render(request, 'cart/cart_list.html', {'carts': carts})
 
-def cart_detail(request, cart_id):
-    cart = get_object_or_404(Cart, pk=cart_id)
-    return render(request, 'cart_detail.html', {'cart': cart})
+
 
 
 
